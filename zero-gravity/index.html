@@ -1,0 +1,252 @@
+<!doctype html>
+<!-- ZERO-GRAVITY: standalone HTML, CSS and JavaScript. No build tools or external dependencies. -->
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Zero-Gravity</title><meta name="description" content="A living abyss, shaped by your presence. An interactive particle experience."><style>
+button{font-family:inherit;line-height:inherit}button:disabled{cursor:default}canvas{vertical-align:middle}
+:root,.dark{--background:#141714;--foreground:#f1f3e9;--primary:#cefa8a;--primary-foreground:#141714;--muted:#242922;--muted-foreground:#a3aaa0;--border:#3b4236;--ring:#cefa8a;--radius:0;--font-sans:Arial,Helvetica,sans-serif}
+*{box-sizing:border-box}body{margin:0;background:var(--background);color:var(--foreground);font-family:Arial,Helvetica,sans-serif}button,a{-webkit-tap-highlight-color:transparent}button{font:inherit}button:focus-visible,a:focus-visible,.field:focus-visible{outline:2px solid #cefa8a;outline-offset:6px}main{max-width:1900px;margin:auto;padding:0 3.5vw}header{height:100px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--border);gap:25px}.wordmark{color:inherit;text-decoration:none;font-weight:800;letter-spacing:-1px;font-size:23px;display:flex;align-items:center;gap:10px}.brand-icon{font-size:37px;color:var(--primary);font-weight:400}.edition,.live,.eyebrow,.control-label,.footer-note,.field-label,.field-bottom{font-family:monospace;font-size:12px;letter-spacing:1.3px}.edition{color:#a3aaa0}.live{display:flex;align-items:center;gap:9px}.live i{width:6px;height:6px;background:var(--primary);border-radius:50%}.experience{position:relative;min-height:640px;height:calc(100svh - 240px);max-height:950px;display:grid;grid-template-columns:44% 56%;align-items:center}.intro{z-index:1;pointer-events:none;padding:35px 0 50px}.eyebrow{display:flex;gap:36px;align-items:center;color:#b9c0b4;margin-bottom:40px}.small-arrow{color:var(--primary);font-size:24px}h1{font-size:clamp(68px,7.8vw,148px);line-height:.92;letter-spacing:-.065em;margin:0;font-weight:500}h1 em{font-family:Georgia,'Times New Roman',serif;font-weight:400;letter-spacing:-.065em;color:var(--primary);font-size:.89em;position:relative;white-space:nowrap}p{font-size:16px;line-height:1.6;color:#aab1a5;margin:32px 0}.instructions{display:flex;gap:14px;align-items:center;font-size:13px;line-height:1.7;color:#d6dccf;margin-top:36px}.instructions b{font-weight:400;color:#8c9588}.mouse-icon{display:block;border:1px solid #858f7e;border-radius:12px;width:21px;height:31px;position:relative}.mouse-icon:after{content:'';position:absolute;top:5px;left:9px;width:1px;height:7px;background:var(--primary)}.field{height:84%;min-height:480px;position:relative;touch-action:none;cursor:crosshair;outline-offset:4px}.field canvas{width:100%;height:100%;display:block}.field-corner{position:absolute;color:#8c9884;font:18px monospace;pointer-events:none}.top-left{left:0;top:0}.top-right{right:0;top:0}.bottom-left{left:0;bottom:0}.bottom-right{right:0;bottom:0}.field-label{position:absolute;top:5px;left:25px;color:#8c9884;pointer-events:none}.field-bottom{position:absolute;bottom:5px;right:28px;font-size:10px;color:#8c9884;pointer-events:none;background:#141714;padding:4px}footer{border-top:1px solid var(--border);min-height:140px;display:flex;align-items:center;justify-content:space-between;gap:25px}.controls{display:flex;align-items:center;gap:28px}.control-label{max-width:80px;line-height:1.7;color:#9aa491}.mode-buttons{display:flex;gap:8px}.mode-buttons button{border:1px solid #434b3d;background:transparent;color:#d6dccf;min-width:119px;padding:15px 13px;display:flex;gap:15px;align-items:center;font-size:14px;cursor:pointer;transition:background .2s,color .2s}.mode-buttons button>span:first-child{font:10px monospace;opacity:.6}.mode-buttons .selected{background:var(--primary);border-color:var(--primary);color:#182011}.mode-mark{margin-left:auto;opacity:0}.selected .mode-mark{opacity:1}.mode-buttons button:hover{border-color:var(--primary)}.pause{background:none;border:0;color:#b4beac;font-size:13px;cursor:pointer;display:flex;align-items:center;gap:10px;padding:12px}.pause>span{font-size:20px}.pause:hover{color:var(--primary)}.footer-note{color:#87927f;font-size:10px;line-height:1.7;text-align:right}@media(min-width:1600px){.experience{grid-template-columns:45% 55%}}@media(max-width:1000px){.edition{display:none}.controls{gap:15px}.footer-note{display:none}.experience{grid-template-columns:47% 53%}h1{font-size:8.3vw}.mode-buttons button{min-width:105px}}@media(max-width:680px){main{padding:0 22px}header{height:80px}.wordmark{font-size:20px}.live{font-size:9px;letter-spacing:.5px}.experience{height:auto;min-height:0;display:flex;flex-direction:column;align-items:stretch}.intro{padding:32px 0 0}.eyebrow{font-size:10px;margin-bottom:23px}h1{font-size:clamp(62px,13vw,88px)}h1 br:first-of-type{display:none}h1 br:first-of-type:after{content:' '}p{font-size:14px;margin:22px 0 0}.instructions{margin-top:20px;font-size:12px}.field{height:380px;min-height:0;margin:20px 0 26px}.field-bottom{font-size:8px;letter-spacing:.6px}footer{padding:23px 0;align-items:flex-start;flex-wrap:wrap;gap:16px}.controls{width:100%;display:block}.control-label{display:block;max-width:none;margin-bottom:12px;font-size:10px}.mode-buttons button{flex:1;min-width:0}.mode-buttons{width:100%}.pause{padding:4px 0}.footer-note{display:block;margin-left:auto}h1{letter-spacing:-.06em}}@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+
+@media(max-width:420px){header{gap:10px;flex-wrap:wrap;height:auto;min-height:80px;padding:14px 0}.wordmark{white-space:nowrap}.live{margin-left:auto}.eyebrow{gap:18px}}
+
+.abyss-toggle{display:inline-flex;align-items:center;gap:12px;min-height:44px;cursor:pointer;color:#c0c9b8;font:12px monospace;letter-spacing:.7px;white-space:nowrap}.abyss-toggle:hover{color:var(--primary)}.abyss-switch[data-slot="switch"]{position:relative;display:inline-flex;flex:0 0 40px;min-width:40px;max-width:40px;width:40px;min-height:24px;max-height:24px;height:24px;border-radius:999px;padding:0;background:#30372d;border:1px solid #737e6b;cursor:pointer}.abyss-switch[data-checked]{background:var(--primary);border-color:var(--primary)}.abyss-switch [data-slot="switch-thumb"]{position:absolute;top:3px;left:3px;width:16px;height:16px;border-radius:50%;background:#b3bda9;translate:none;transform:none;transition:left .18s ease,background-color .18s ease}.abyss-switch[data-checked] [data-slot="switch-thumb"]{background:#182011;left:19px;translate:none;transform:none}.abyss-switch:focus-visible{outline:2px solid var(--primary);outline-offset:5px}@media(min-width:681px) and (max-width:1150px){footer{flex-wrap:wrap;padding:22px 0}.footer-note{display:none}}
+
+.mode-buttons button{white-space:nowrap}.mode-buttons{flex-wrap:wrap}.mode-buttons button{min-width:119px}@media(max-width:680px){.mode-buttons button{padding:13px 9px;gap:8px;min-width:0;font-size:12px}.mode-buttons .mode-mark{display:none}}
+</style></head><body><main><header><a class="wordmark" href="#" aria-label="Zero-Gravity home"><span class="brand-icon">✳</span> ZERO-GRAVITY</a><span class="edition">INDEPENDENT EXPERIMENTS IN MOTION</span><span class="live"><i></i> EXPERIMENT / 001</span></header><section class="experience" aria-label="Interactive motion study"><div class="intro"><div class="eyebrow"><span>01 — INTERACTIVE PARTICLES</span><span class="small-arrow">↗</span></div><h1>Make <br/>a little<br/><em>disturbance.</em></h1><p>Nothing moves until you do.<br/>A living abyss, shaped by your presence.</p><div class="instructions"><span class="mouse-icon" aria-hidden="true"></span><span>Move to bend the particles<br/><b>Hold to release energy</b></span></div></div><div class="field " tabindex="0" role="application" aria-label="Interactive particles. Move or drag to influence it. Hold Space or Enter to release energy. Use arrow keys to move the point."><canvas aria-hidden="true"></canvas><div class="field-corner top-left">+</div><div class="field-corner top-right">+</div><div class="field-corner bottom-left">+</div><div class="field-corner bottom-right">+</div><span class="field-label">E / 01</span><span class="field-bottom">EVERY MOVEMENT LEAVES AN IMPRESSION</span></div></section><footer><div class="controls"><span class="control-label">PARTICLES BEHAVIOR</span><div class="mode-buttons"><button aria-pressed="true" class="selected"><span>01</span>Flow<span class="mode-mark">↗</span></button><button aria-pressed="false" class=""><span>02</span>Orbit<span class="mode-mark">↗</span></button><button aria-pressed="false" class=""><span>03</span>Scatter<span class="mode-mark">↗</span></button></div></div><label class="abyss-toggle" for="abyss-mode"><button id="abyss-mode" type="button" class="abyss-switch" data-slot="switch" role="switch" aria-checked="false" aria-label="Abyss mode"><span data-slot="switch-thumb"></span></button><span>ENTER THE ABYSS</span></label><span class="footer-note">AN EXPLORATION.<br/>NO RULES. NO COURSE. JUST PLAY.</span></footer></main><script>
+(()=>{'use strict';
+const canvas={current:document.querySelector('canvas')};
+const field=document.querySelector('.field');
+const settings={current:{mode:0,voidMode:false}};
+const pointer={current:{x:.67,y:.48,down:false,present:false}};
+const toggle=document.querySelector('#abyss-mode');
+const buttons=[...document.querySelectorAll('.mode-buttons button')];
+const instructions=document.querySelector('.instructions>span:last-child');
+const abyssNames=['Vortex','Repel','Sling'];
+const abyssInstructions=['Move to pull particles into orbit<br><b>Hold to gather. Release to burst.</b>','Move to push particles away<br><b>Hold to expand. Release to draw them back.</b>','Catch the swarm. Change its course.<br><b>Hold and drag. Release to launch.</b>'];
+const savedModes={order:0,abyss:0};
+function update(){
+ const abyss=settings.current.voidMode,active=pointer.current.down;
+ toggle.setAttribute('aria-checked',String(abyss));toggle.toggleAttribute('data-checked',abyss);
+ document.querySelector('.abyss-toggle>span').textContent=abyss?'ESCAPE THE ABYSS':'ENTER THE ABYSS';
+ document.querySelector('.live').innerHTML='<i></i> EXPERIMENT / '+(abyss?'002':'001');
+ document.querySelector('.field-label').textContent='E / '+(abyss?'02':'01');
+ document.querySelector('.eyebrow>span').textContent=abyss?'02 — THE ABYSS':'01 — INTERACTIVE PARTICLES';
+ instructions.innerHTML=abyss?abyssInstructions[settings.current.mode]:'Move to bend the particles<br><b>Hold to release energy</b>';
+ document.querySelector('.control-label').textContent=abyss?'ABYSS BEHAVIOR':'PARTICLES BEHAVIOR';
+ field.classList.toggle('is-active',active);
+ field.setAttribute('aria-label',abyss?'The Abyss. '+abyssNames[settings.current.mode]+'. '+abyssInstructions[settings.current.mode].replace(/<[^>]*>/g,' ')+ ' Use arrow keys to move; hold Space or Enter to apply energy.':'Interactive particles. Move or drag to influence it. Hold Space or Enter to release energy. Use arrow keys to move the point.');
+ document.querySelector('.field-bottom').textContent=abyss?(active?['HOLD IT ALL. THEN LET GO.','MAKE ROOM FOR NOTHING.','STRETCH IT. THEN LET IT FLY.'][settings.current.mode]:['EVERYTHING IS DRAWN TO SOMETHING','A LITTLE SPACE CHANGES EVERYTHING','MOMENTUM IS YOUR MATERIAL'][settings.current.mode]):(active?'ENERGY IN MOTION':'EVERY MOVEMENT LEAVES AN IMPRESSION');
+ buttons.forEach((button,i)=>{button.innerHTML='<span>0'+(i+1)+'</span>'+(abyss?abyssNames[i]:['Flow','Orbit','Scatter'][i])+'<span class="mode-mark">↗</span>';button.classList.toggle('selected',i===settings.current.mode);button.setAttribute('aria-pressed',String(i===settings.current.mode));});
+}
+buttons.forEach((button,i)=>button.addEventListener('click',()=>{pointer.current.down=false;settings.current.mode=i;savedModes[settings.current.voidMode?'abyss':'order']=i;update();}));
+toggle.addEventListener('click',()=>{pointer.current.down=false;settings.current.voidMode=!settings.current.voidMode;settings.current.mode=savedModes[settings.current.voidMode?'abyss':'order'];update();});
+function position(e){const r=field.getBoundingClientRect();pointer.current.x=(e.clientX-r.left)/r.width;pointer.current.y=(e.clientY-r.top)/r.height;pointer.current.present=true;}
+function release(){pointer.current.down=false;update();}
+field.addEventListener('pointermove',position);
+field.addEventListener('pointerdown',e=>{field.setPointerCapture(e.pointerId);position(e);pointer.current.down=true;update();});
+field.addEventListener('pointerup',release);field.addEventListener('pointercancel',release);
+field.addEventListener('pointerleave',()=>{if(!pointer.current.down)pointer.current.present=false;});
+field.addEventListener('blur',release);window.addEventListener('blur',release);
+field.addEventListener('keydown',e=>{if(![' ','Enter','ArrowUp','ArrowDown','ArrowLeft','ArrowRight'].includes(e.key))return;e.preventDefault();pointer.current.present=true;if(e.key===' '||e.key==='Enter'){pointer.current.down=true;update();}else{pointer.current.x=Math.max(.05,Math.min(.95,pointer.current.x+(e.key==='ArrowRight'?.035:e.key==='ArrowLeft'?-.035:0)));pointer.current.y=Math.max(.05,Math.min(.95,pointer.current.y+(e.key==='ArrowDown'?.035:e.key==='ArrowUp'?-.035:0)));}});
+field.addEventListener('keyup',e=>{if(e.key===' '||e.key==='Enter')release();});
+update();
+const el = canvas.current;
+const ctx = el.getContext('2d');
+if (!ctx)
+    return;
+const reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
+let width = 0, height = 0, frame = 0, time = 0, last = 0;
+let x = .67, y = .48, pressure = 0, blend = 0, wasDown = false, burst = 0, previousMode = -1;
+let grabX=0,grabY=0,dragX=0,dragY=0,previousX=.67,previousY=.48;
+let particles = [];
+const resize = () => {
+    const box = el.getBoundingClientRect();
+    width = box.width;
+    height = box.height;
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    el.width = width * dpr;
+    el.height = height * dpr;
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    particles = [];
+    const gap = width < 600 ? 20 : 23;
+    for (let gy = 22; gy < height; gy += gap)
+        for (let gx = 20; gx < width; gx += gap) {
+            const seed = Math.random();
+            particles.push({ hx: gx, hy: gy, x: gx, y: gy, vx: Math.cos(seed * 40), vy: Math.sin(seed * 40), seed, caught:false,offsetX:0,offsetY:0, trail: [] });
+        }
+};
+const observer = new ResizeObserver(resize);
+observer.observe(el);
+resize();
+const render = (now) => {
+    frame = requestAnimationFrame(render);
+    const dt = Math.min((now - (last || now)) / 16.667, 2);
+    last = now;
+    const { mode, voidMode } = settings.current;
+    const motion = !reduced.matches;
+    if (motion)
+        time += .009 * dt;
+    const p = pointer.current;
+    const tx = p.present ? p.x : .64 + Math.sin(time * .35) * .07;
+    const ty = p.present ? p.y : .49 + Math.cos(time * .4) * .07;
+    const ease = motion ? 1 - Math.pow(.925, dt) : 1;
+    x += (tx - x) * ease;
+    y += (ty - y) * ease;
+    pressure += ((p.down ? 1 : 0) - pressure) * ease;
+    blend += ((voidMode ? 1 : 0) - blend) * (motion ? 1 - Math.pow(.955, dt) : 1);
+    if (Math.abs(blend - (voidMode ? 1 : 0)) < .001)
+        blend = voidMode ? 1 : 0;
+    if(previousMode!==mode){wasDown=false;burst=0;for(const dot of particles)dot.caught=false;previousMode=mode;}
+    const mouseVX=(p.x-previousX)*width/Math.max(dt,.5),mouseVY=(p.y-previousY)*height/Math.max(dt,.5);
+    previousX=p.x;previousY=p.y;
+    if(voidMode && mode===2 && p.down && !wasDown){
+      grabX=p.x*width;grabY=p.y*height;dragX=0;dragY=0;
+      const nearest=[...particles].sort((a,b)=>Math.hypot(a.x-grabX,a.y-grabY)-Math.hypot(b.x-grabX,b.y-grabY));
+      const reach=Math.min(width,height)*.24;
+      nearest.forEach((dot,i)=>{dot.caught=i<18||Math.hypot(dot.x-grabX,dot.y-grabY)<reach;dot.offsetX=(dot.x-grabX)*.4;dot.offsetY=(dot.y-grabY)*.4;});
+    }
+    if(p.down && mode===2){dragX=p.x*width-grabX;dragY=p.y*height-grabY;}
+    if (wasDown && !p.down && voidMode && motion) {
+        burst = 1;
+        for (const dot of particles) {
+            if(mode===2){
+              if(dot.caught){const stretch=Math.hypot(dragX,dragY);const speed=Math.min(24,3+stretch*.085);const angle=stretch>2?Math.atan2(dragY,dragX):Math.atan2(dot.offsetY,dot.offsetX);dot.vx+=Math.cos(angle)*speed;dot.vy+=Math.sin(angle)*speed;dot.caught=false;}
+              continue;
+            }
+            const angle = Math.atan2(dot.y - y * height, dot.x - x * width) + dot.seed * .4;
+            const speed = mode===1 ? -5-dot.seed*5 : mode===2 ? 1+dot.seed*2 : 7 + dot.seed * 12 + pressure * 8;
+            dot.vx = Math.cos(angle) * speed;
+            dot.vy = Math.sin(angle) * speed;
+        }
+    }
+    wasDown = p.down;
+    burst *= Math.pow(.965, dt);
+    ctx.clearRect(0, 0, width, height);
+    const radius = Math.min(width, height) * (.47 + pressure * .23);
+    for (const dot of particles) {
+        const dx = dot.hx - x * width, dy = dot.hy - y * height;
+        const distance = Math.hypot(dx, dy), force = Math.max(0, 1 - distance / radius), base = Math.atan2(dy, dx);
+        let angle = -.55 + Math.sin(dot.hx * .006 + dot.hy * .007 + time) * .3;
+        if (mode === 0)
+            angle += force * (2.5 + Math.sin(base + time * .3));
+        if (mode === 1)
+            angle = base + Math.PI / 2 + (1 - force) * .7;
+        if (mode === 2)
+            angle = base + Math.sin(distance * .025 - time * 2) * force * 1.7;
+        angle += pressure * Math.sin(distance * .035 - time * 4) * force * 2;
+        if (voidMode && motion) {
+            const ax = x * width - dot.x, ay = y * height - dot.y, d = Math.max(8, Math.hypot(ax, ay));
+            if(mode===0){
+              const orbitRadius=p.down?5+dot.seed*15:45+dot.seed*Math.min(width,height)*.38;
+              const pull=(d-orbitRadius)*(p.down?.005:.00065)*(1-burst*.9),spin=p.down?.07:.055;
+              dot.vx+=(ax/d*pull-ay/d*spin)*dt;dot.vy+=(ay/d*pull+ax/d*spin)*dt;
+            }else if(mode===1){
+              const exclusion=Math.min(width,height)*(.23+pressure*.26);
+              const repel=Math.max(0,1-d/exclusion)*(1.5+pressure*3);
+              dot.vx+=(-ax/d*repel+(dot.hx-dot.x)*.0009)*dt;
+              dot.vy+=(-ay/d*repel+(dot.hy-dot.y)*.0009)*dt;
+            }else{
+              if(p.down && dot.caught){
+                const targetX=p.x*width-dragX*.3+dot.offsetX,targetY=p.y*height-dragY*.3+dot.offsetY;
+                dot.vx+=(targetX-dot.x)*.035*dt;dot.vy+=(targetY-dot.y)*.035*dt;
+              }else{
+                const influence=Math.max(0,1-d/(Math.min(width,height)*.25));
+                dot.vx+=(ax*.0002*influence+Math.max(-15,Math.min(15,mouseVX))*.08*influence)*dt;
+                dot.vy+=(ay*.0002*influence+Math.max(-15,Math.min(15,mouseVY))*.08*influence)*dt;
+              }
+            }
+            const drag=Math.pow(mode===0?(p.down?.91:.991):mode===1?.94:(p.down&&dot.caught?.87:.996),dt);
+            dot.vx *= drag;
+            dot.vy *= drag;
+            dot.x += dot.vx * dt;
+            dot.y += dot.vy * dt;
+            if (dot.x < 4 || dot.x > width - 4) {
+                dot.x = Math.max(4, Math.min(width - 4, dot.x));
+                dot.vx *= -.65;
+            }
+            if (dot.y < 4 || dot.y > height - 4) {
+                dot.y = Math.max(4, Math.min(height - 4, dot.y));
+                dot.vy *= -.65;
+            }
+        }
+        else if (!voidMode) {
+            dot.x += (dot.hx - dot.x) * ease;
+            dot.y += (dot.hy - dot.y) * ease;
+            dot.vx *= .9;
+            dot.vy *= .9;
+        }
+        const px = dot.hx * (1 - blend) + dot.x * blend, py = dot.hy * (1 - blend) + dot.y * blend;
+        if (blend > .02) {
+            if (motion) {
+                dot.trail.push({ x: px, y: py });
+                if (dot.trail.length > 10)
+                    dot.trail.shift();
+            }
+            if (dot.trail.length > 1) {
+                ctx.beginPath();
+                dot.trail.forEach((v, i) => i ? ctx.lineTo(v.x, v.y) : ctx.moveTo(v.x, v.y));
+                ctx.strokeStyle = `rgba(190,242,102,${blend * .15})`;
+                ctx.lineWidth = .8;
+                ctx.stroke();
+            }
+            ctx.fillStyle = `rgba(210,255,160,${blend * (.4 + dot.seed * .6)})`;
+            ctx.beginPath();
+            ctx.arc(px, py, .7 + dot.seed * 1.1, 0, Math.PI * 2);
+            ctx.fill();
+        }
+        else
+            dot.trail = [];
+        if (blend < .999) {
+            const length = (5 + force * 15) * (1 - blend);
+            const bright = Math.round(90 + force * 110);
+            ctx.globalAlpha = 1 - blend;
+            ctx.strokeStyle = force > .1 ? `rgba(190,242,102,${.28 + force * .7})` : `rgb(${bright - 20},${bright - 12},${bright - 15})`;
+            ctx.lineWidth = 1;
+            ctx.beginPath();
+            ctx.moveTo(px - Math.cos(angle) * length / 2, py - Math.sin(angle) * length / 2);
+            ctx.lineTo(px + Math.cos(angle) * length / 2, py + Math.sin(angle) * length / 2);
+            ctx.stroke();
+            ctx.globalAlpha = 1;
+        }
+    }
+    // Local, equal-mass collisions pass momentum through the swarm.
+    if(voidMode && mode===2 && motion){
+      const cell=10,buckets=new Map();
+      for(const dot of particles){
+        const bx=Math.floor(dot.x/cell),by=Math.floor(dot.y/cell);
+        for(let ox=-1;ox<=1;ox++)for(let oy=-1;oy<=1;oy++){
+          for(const other of buckets.get((bx+ox)+','+(by+oy))||[]){
+            const dx=other.x-dot.x,dy=other.y-dot.y,d=Math.hypot(dx,dy);
+            if(d>0.01 && d<5){
+              const nx=dx/d,ny=dy/d,approach=(dot.vx-other.vx)*nx+(dot.vy-other.vy)*ny;
+              if(approach>0){const impulse=approach*.8;dot.vx-=nx*impulse;dot.vy-=ny*impulse;other.vx+=nx*impulse;other.vy+=ny*impulse;}
+              const overlap=(5-d)*.5;dot.x-=nx*overlap;dot.y-=ny*overlap;other.x+=nx*overlap;other.y+=ny*overlap;
+            }
+          }
+        }
+        const key=bx+','+by;if(!buckets.has(key))buckets.set(key,[]);buckets.get(key).push(dot);
+      }
+    }
+    if (blend > .01) {
+        const glow = ctx.createRadialGradient(x * width, y * height, 0, x * width, y * height, 35 + pressure * 65);
+        glow.addColorStop(0, `rgba(210,255,160,${blend * (.08 + pressure * .4)})`);
+        glow.addColorStop(1, 'rgba(190,242,102,0)');
+        ctx.fillStyle = glow;
+        ctx.fillRect(0, 0, width, height);
+    }
+    ctx.strokeStyle = '#d2ff87';
+    ctx.lineWidth = 1;
+    const r = voidMode ? (mode===1?24+pressure*40:18-pressure*10) : 24+pressure*22;
+    ctx.beginPath();
+    ctx.arc(x * width, y * height, r, 0, Math.PI * 2);
+    ctx.stroke();
+    ctx.fillStyle = '#d2ff87';
+    ctx.fillRect(x * width - 2, y * height - 2, 4, 4);
+    ctx.font = '11px monospace';
+    const label = voidMode ? (mode===0?(p.down?'GATHERING ENERGY':burst>.2?'ENERGY RELEASED':'GRAVITY VORTEX'):mode===1?(p.down?'EXPANDING THE VOID':'REPULSION ZONE'):(p.down?'SWARM CAPTURED':'SLING')) : (p.down ? 'ENERGY RELEASE' : 'POINT OF INFLUENCE');
+    const labelWidth = ctx.measureText(label).width;
+    const labelX = x * width + r + 10 + labelWidth > width - 8 ? x * width - r - 10 - labelWidth : x * width + r + 10;
+    ctx.fillText(label, Math.max(8, labelX), Math.max(14, Math.min(height - 15, y * height + 4)));
+};
+frame = requestAnimationFrame(render);
+
+})();
+</script></body></html>
